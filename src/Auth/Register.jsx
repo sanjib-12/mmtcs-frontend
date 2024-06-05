@@ -7,8 +7,8 @@ const Register = () =>{
 
     const {loading, error, registerUser} = useSignup();
 
-    const handleRegister =(values)=>{
-        registerUser(values);
+    const handleRegister =async (values)=>{
+        await registerUser(values);
     }
 
     return <Card className='form-container'>
@@ -21,7 +21,7 @@ const Register = () =>{
                 </Typography.Title>
 
                 <Typography.Text type="secondary" strong className='slogan'>
-                    join for exclusive access!
+                    Best way to mange your travel
                 </Typography.Text>
 
                 <Form layout = "vertical" onFinish={handleRegister} autoComplete='off'>
@@ -91,17 +91,17 @@ const Register = () =>{
 
                     </Form.Item>
 
-                    {/*{error && <Alert description={error} type='error' showIcon closable className='alert' />}*/}
+                    {error && <Alert description={error} type='error' showIcon closable className='alert' />}
 
                     <Form.Item>
                         <Button 
-                         // type={`${loading ? '': 'primary'}`}
+                         type={`${loading ? '': 'primary'}`}
                           htmlType='submit'
                           size='large'
                           className='btn'
                           >
-                            {/*{loading ? <Spin/> : 'Create Account'}*/}
-                            Create Account
+                            {loading ? <Spin/> : 'Create Account'}
+                            
                         </Button>
                     </Form.Item>
 

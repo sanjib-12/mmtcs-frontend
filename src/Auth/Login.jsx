@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Alert, Spin, Card, Flex, Form, Typography, Input, Button} from 'antd';
+import useLogin from '../Hooks/useLogin';
 
 
 const Login = () =>{
 
+    const {error, loading, loginUser} = useLogin();
     const handleLogin =async (values)=>{
-        console.log(values);
+        await loginUser(values);
     }
 
     return <Card className='form-container'>
@@ -19,7 +21,7 @@ const Login = () =>{
                 </Typography.Title>
 
                 <Typography.Text type="secondary" strong className='slogan'>
-                    join for exclusive access!
+                    Continue to your trip
                 </Typography.Text>
 
                 <Form layout = "vertical" onFinish={handleLogin} autoComplete='off'>
@@ -69,7 +71,7 @@ const Login = () =>{
                         ]}
                         >
 
-                        <Input size="large" placeholder="Enter your Password" />
+                        <Input.Password size="large" placeholder="Enter your Password" />
 
                     </Form.Item>
 
@@ -88,17 +90,17 @@ const Login = () =>{
 
                     </Form.Item> */}
 
-                    {/*{error && <Alert description={error} type='error' showIcon closable className='alert' />}*/}
+                    {error && <Alert description={error} type='error' showIcon closable className='alert' />}
 
                     <Form.Item>
                         <Button 
-                            // type={`${loading ? '': 'primary'}`}
+                            type={`${loading ? '': 'primary'}`}
                             htmlType='submit'
                             size='large'
                             className='btn'
                             >
-                            {/*{loading ? <Spin/> : 'Create Account'}*/}
-                            Sign In
+                            {loading ? <Spin/> : 'Sign In'}
+                            
                         </Button>
                     </Form.Item>
 
