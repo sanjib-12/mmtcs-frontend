@@ -19,7 +19,8 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useAuth } from '../Contexts/AuthContext';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2FuamliLTEyIiwiYSI6ImNsd3phYzFtaTA1c2sya29wMWFoNmZpZmMifQ.kErcDiFqcs2QkU01GYH5Cw';
+//below add the token from the mapbox
+mapboxgl.accessToken = '';
 
 const Dashboard = () => {
     const {logout} = useAuth();
