@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Alert, Spin, Card, Flex, Form, Typography, Input, Button} from 'antd';
-import useLogin from '../Hooks/useLogin';
+import useReset from '../Hooks/useReset.jsx';
 
 
-const Login = () =>{
+const Reset = () =>{
 
-    const {error, loading, loginUser} = useLogin();
+    const {error, loading, resetUser} = useReset();
     const handleLogin =async (values)=>{
-        await loginUser(values);
+        await resetUser(values);
     }
 
     return <Card className='form-container'>
@@ -17,11 +17,11 @@ const Login = () =>{
 
             <Flex vertical flex={1} >
                 <Typography.Title level={3} strong className="title">
-                    Sign In
+                    Password Reset
                 </Typography.Title>
 
                 <Typography.Text type="secondary" strong className='slogan'>
-                    Continue to your trip
+                    Forgot your password!
                 </Typography.Text>
 
                 <Form layout = "vertical" onFinish={handleLogin} autoComplete='off'>
@@ -61,7 +61,7 @@ const Login = () =>{
                     </Form.Item>
 
                     <Form.Item 
-                        label='Password' 
+                        label='new Password' 
                         name="password"
                         rules={[
                             {
@@ -75,8 +75,8 @@ const Login = () =>{
 
                     </Form.Item>
 
-                    {/* <Form.Item 
-                        label='Password' 
+                     <Form.Item 
+                        label='Confirm Password' 
                         name="passwordConfirm"
                         rules={[
                             {
@@ -86,9 +86,9 @@ const Login = () =>{
                         ]}
                         >
 
-                        <Input size="large" placeholder="Re-enter your Password" />
+                        <Input.Password size="large" placeholder="Re-enter your Password" />
 
-                    </Form.Item> */}
+                    </Form.Item>
 
                     {error && <Alert description={error} type='error' showIcon closable className='alert' />}
 
@@ -99,33 +99,20 @@ const Login = () =>{
                             size='large'
                             className='btn'
                             >
-                            {loading ? <Spin/> : 'Sign In'}
+                            {loading ? <Spin/> : 'Reset Password'}
                             
                         </Button>
                     </Form.Item>
 
                     <Form.Item>
-                        <Link to="/">
+                        <Link to="/login">
                             <Button 
                             
                             htmlType='submit'
                             size='large'
                             className='btn'
                             >
-                                Create an account
-                            </Button>
-                        </Link>
-                    </Form.Item>
-
-                    <Form.Item>
-                        <Link to="/reset">
-                            <Button 
-                            
-                            htmlType='submit'
-                            size='large'
-                            className='btn'
-                            >
-                                Forgot Password
+                                Login
                             </Button>
                         </Link>
                     </Form.Item>
@@ -143,4 +130,4 @@ const Login = () =>{
     </Card>
 }
 
-export default Login;
+export default Reset;

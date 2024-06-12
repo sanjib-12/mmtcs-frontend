@@ -64,7 +64,7 @@ const Dashboard = () => {
     onClick={logout} 
     style={{ 
       position: 'absolute', 
-      bottom: '40px', 
+      bottom: '10px', 
       left: '10px',
       zIndex: 10 
     }}
